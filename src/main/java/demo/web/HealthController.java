@@ -27,7 +27,7 @@ public class HealthController {
         List<String> names = Lists.newArrayList(applicationContext.getBeanDefinitionNames());
         names.sort((String s1, String s2) -> s1.compareTo(s2));
         String appContext = Joiner.on("<br/>").join(names);
-        log.info("beans : {}", names);
+       // log.info("beans : {}", names);
         return new ResponseEntity<>(appContext, HttpStatus.OK);
     }
 
