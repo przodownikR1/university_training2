@@ -1,0 +1,70 @@
+buildscript {
+    ext {
+        springBootVersion = '1.2.3.RELEASE'
+          lombokVersion = "1.16.2"
+          guavaVersion = "18.0"
+          festAssertVersion = "1.4"
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") 
+        classpath("io.spring.gradle:dependency-management-plugin:0.5.0.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot' 
+apply plugin: 'io.spring.dependency-management' 
+
+
+jar {
+    baseName = 'ut2'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+   
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile ("org.springframework.boot:spring-boot-starter-actuator")
+    compile ("org.springframework.boot:spring-boot-starter-remote-shell")
+     compile("org.springframework.boot:spring-boot-starter-logging")
+    compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("com.google.guava:guava:${guavaVersion}")
+    compile 'com.h2database:h2:1.4.187'
+    
+      runtime("javax.servlet:jstl")
+       testCompile("org.easytesting:fest-assert:${festAssertVersion}")
+    runtime("mysql:mysql-connector-java")
+    testCompile("org.springframework.boot:spring-boot-starter-test") 
+}
+
+
+eclipse {
+    classpath {
+         containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+         containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}
+test {
+    testLogging {
+      events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
+  
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
