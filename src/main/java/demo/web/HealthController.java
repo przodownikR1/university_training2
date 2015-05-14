@@ -14,14 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
 @Slf4j
+@Api(value = "health", description = "health API")
 public class HealthController {
 
     @Autowired
     private ApplicationContext applicationContext;
-
+    @ApiOperation(httpMethod = "GET", value = "context bean list")
     @RequestMapping(value = "/api/appContext", method = RequestMethod.GET)
     public ResponseEntity<String> appContext() {
         List<String> names = Lists.newArrayList(applicationContext.getBeanDefinitionNames());
