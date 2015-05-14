@@ -1,6 +1,5 @@
 package demo.config;
 
-import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.sql.DataSource;
@@ -26,6 +25,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Import(value = { PropertiesLoader.class })
 @EnableJpaRepositories("pl.java.scalatech.repository")
 public class DsConfigEmbedded {
+    @Value("${hibernate.dialect}")
     private String dialect;
     @Value("${spring.jpa.show-sql}")
     private boolean sqlShowFlag;
@@ -40,7 +40,7 @@ public class DsConfigEmbedded {
     }
     @Bean
     @DependsOn(value = "dataSource")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws SQLException {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
@@ -64,7 +64,7 @@ public class DsConfigEmbedded {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager() throws SQLException {
+    public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         transactionManager.setDataSource(dataSource());
