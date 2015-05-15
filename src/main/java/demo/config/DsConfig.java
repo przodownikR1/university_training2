@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -44,7 +43,7 @@ public class DsConfig {
         dataSource.setDriverClass(org.h2.Driver.class);
         dataSource.setUsername("sa");
         dataSource.setPassword("");
-        dataSource.setUrl("jdbc:h2:tcp://localhost:9092/mem:przodownik;DB_CLOSE_DELAY=-1");
+        dataSource.setUrl("jdbc:h2:tcp://localhost:9095/mem:przodownik;DB_CLOSE_DELAY=-1");
         return dataSource;
     }
 
@@ -52,7 +51,7 @@ public class DsConfig {
     @DependsOn(value = "h2WebServer")
     public org.h2.tools.Server createTcpServer() throws SQLException {
         log.info("+++  h2Server ......");
-        return org.h2.tools.Server.createTcpServer("-tcp,-tcpAllowOthers,-tcpPort,9092".split(","));
+        return org.h2.tools.Server.createTcpServer("-tcp,-tcpAllowOthers,-tcpPort,9095".split(","));
     }
 
     @Bean(name = "h2WebServer", initMethod = "start", destroyMethod = "stop")
