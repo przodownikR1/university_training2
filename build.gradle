@@ -45,8 +45,11 @@ dependencies {
     compile 'com.h2database:h2:1.4.187'
     compile("com.mangofactory:swagger-springmvc:0.8.8")
     compile ("org.ajar:swagger-spring-mvc-ui:0.2")
+    compile("org.springframework.boot:spring-boot-starter-tomcat")
+    runtime("org.apache.tomcat.embed:tomcat-embed-jasper")
+    runtime("javax.servlet:jstl")
 
-      runtime("javax.servlet:jstl")
+
        testCompile("org.easytesting:fest-assert:${festAssertVersion}")
     runtime("mysql:mysql-connector-java")
     testCompile("org.springframework.boot:spring-boot-starter-test") 

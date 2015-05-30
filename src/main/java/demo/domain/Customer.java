@@ -16,7 +16,7 @@ import lombok.experimental.Builder;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person extends PKEntity{
+public class Customer extends PKEntity{
 
     private static final long serialVersionUID = 2669340231494998572L;
 
