@@ -1,5 +1,7 @@
 package demo.config;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -14,22 +16,25 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
+@Slf4j
 public class WebConfig extends WebMvcConfigurerAdapter {
 
     @Autowired
     private Environment env;
 
-    @Bean
-    public InternalResourceViewResolver InternalResourceViewResolver() {
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/templates/");
-        viewResolver.setSuffix(".jsp");
-        return viewResolver;
-    }
+    /*
+     * @Bean
+     * public InternalResourceViewResolver internalResourceViewResolver() {
+     * InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+     * viewResolver.setPrefix("/WEB-INF/templates/");
+     * viewResolver.setSuffix(".jsp");
+     * log.info(":: internalResourceViewResolver");
+     * return viewResolver;
+     * }
+     */
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

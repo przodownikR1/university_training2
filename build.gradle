@@ -30,7 +30,9 @@ targetCompatibility = 1.8
 repositories {
     mavenCentral()
 }
-
+project.ext {
+  camelVersion = '2.15.2'
+}
 
 dependencies {
    
@@ -39,13 +41,26 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-data-rest")
     compile ("org.springframework.boot:spring-boot-starter-actuator")
     compile ("org.springframework.boot:spring-boot-starter-remote-shell")
-     compile("org.springframework.boot:spring-boot-starter-logging")
+    compile("org.springframework.boot:spring-boot-starter-logging")
+    
+    compile 'org.springframework:spring-aspects:4.1.6.RELEASE'
+    compile 'org.springframework:spring-aop:4.1.6.RELEASE'
+    compile "org.springframework:spring-context-support:4.1.6.RELEASE"
+    
+    
+    compile "org.apache.camel:camel-spring-boot:2.15.2"
+    compile "org.apache.camel:camel-quartz2:2.15.2"
+     compile "net.sf.ehcache:ehcache-core:2.6.11"
+    compile("org.apache.camel:camel-cxf:2.15.2") 
     compile("org.projectlombok:lombok:${lombokVersion}")
     compile("com.google.guava:guava:${guavaVersion}")
     compile 'com.h2database:h2:1.4.187'
     
-      runtime("javax.servlet:jstl")
-       testCompile("org.easytesting:fest-assert:${festAssertVersion}")
+   compile("org.springframework.boot:spring-boot-starter-tomcat")
+    runtime("org.apache.tomcat.embed:tomcat-embed-jasper")
+     runtime("javax.servlet:jstl")
+      
+    testCompile("org.easytesting:fest-assert:${festAssertVersion}")
     runtime("mysql:mysql-connector-java")
     testCompile("org.springframework.boot:spring-boot-starter-test") 
 }
