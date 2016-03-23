@@ -14,7 +14,7 @@ import demo.repository.country.PersonRepository;
 
 @SpringBootApplication
 public class Ut2Application {
-
+    // tag:main[]
     @Bean
     InitializingBean populateData(final PersonRepository personRepository) {
         return () -> {
@@ -27,6 +27,7 @@ public class Ut2Application {
         };
 
     }
+    // end:main[]
 
     public static void main(String[] args) {
         SpringApplication.run(Ut2Application.class, args);

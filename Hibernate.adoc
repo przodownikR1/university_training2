@@ -1,0 +1,75 @@
+= DocGist collaborative AsciiDoc editor
+:docInfo1
+:numbered:
+:icons: font
+:pagenums:
+:imagesdir: images
+:source-highlighter: coderay
+
+:image-link: https://pbs.twimg.com/profile_images/425289501980639233/tUWf7KiC.jpeg
+
+ifndef::sourcedir[:sourcedir: ./src/main/java/]
+
+== Agenda
+
+. Hibernate geneza
+.. Kiedy powstał 
+.. Do czego służy
+
+[source,java]
+.Java code from project
+----
+include::{sourcedir}/demo/web/HealthController.java[tag=main]
+----
+
+.. Zalety 
+.. Wady
+. Mapowania
+.. OneToOne
+.. ManyToOne
+.. OneToMany
+.. ManyToMany
+
+== Przykłady
+== Testy
+== O mnie
+* programista
+* blog link:http://przewidywalna-java.blogspot.com[]
+* image:{image-link} [role='img-circle']
+
+
+
+== Test hibernate
+- [X] pesistence
+- [X] speed
+- [X] validation
+
+|===
+
+|JPA| Hibernate|Validator
+
+| Api
+| Core
+| Validation
+
+| Api3
+| Core3
+| Validation3
+
+
+|===
+
+a| icon:wrench[2x]
+a| icon:file-text[3x]
+
+TIP: Share the URL with others to collaborate!
+
+Life's Mysteries
+================
+:author: przodownik
+:doctype: book
+:toc:
+:icons:
+:data-uri:
+:lang: en
+:encoding: utf-8

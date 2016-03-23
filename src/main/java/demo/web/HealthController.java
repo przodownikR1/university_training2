@@ -2,8 +2,6 @@ package demo.web;
 
 import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
 @Slf4j
 public class HealthController {
@@ -22,6 +22,7 @@ public class HealthController {
     @Autowired
     private ApplicationContext applicationContext;
 
+    // tag::main[]
     @RequestMapping(value = "/api/appContext", method = RequestMethod.GET)
     public ResponseEntity<String> appContext() {
         List<String> names = Lists.newArrayList(applicationContext.getBeanDefinitionNames());
@@ -30,6 +31,7 @@ public class HealthController {
         log.info("beans : {}", names);
         return new ResponseEntity<>(appContext, HttpStatus.OK);
     }
+    // end::main[]
 
     @RequestMapping(value = "/api/ping", method = RequestMethod.GET)
     ResponseEntity<String> ping() {
