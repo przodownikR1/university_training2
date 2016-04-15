@@ -16,11 +16,14 @@ ifndef::sourcedir[:sourcedir: ./src/main/java/]
 .. Kiedy powstał 
 .. Do czego służy
 
-[source,java]
+[source,java,linenums,options="nowrap"]
 .Java code from project
 ----
-include::{sourcedir}/demo/web/HealthController.java[tag=main]
+include::{sourcedir}/demo/web/HealthController.java[tag=main, indent=0]
 ----
+<1> def rest controller
+<2> joins strings
+<3> response generate
 
 .. Zalety 
 .. Wady

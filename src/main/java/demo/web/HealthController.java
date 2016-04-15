@@ -23,13 +23,13 @@ public class HealthController {
     private ApplicationContext applicationContext;
 
     // tag::main[]
-    @RequestMapping(value = "/api/appContext", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/appContext", method = RequestMethod.GET) //<1>
     public ResponseEntity<String> appContext() {
         List<String> names = Lists.newArrayList(applicationContext.getBeanDefinitionNames());
         names.sort((String s1, String s2) -> s1.compareTo(s2));
-        String appContext = Joiner.on("<br/>").join(names);
+        String appContext = Joiner.on("<br/>").join(names); // <2>
         log.info("beans : {}", names);
-        return new ResponseEntity<>(appContext, HttpStatus.OK);
+        return new ResponseEntity<>(appContext, HttpStatus.OK); // <3>
     }
     // end::main[]
 
